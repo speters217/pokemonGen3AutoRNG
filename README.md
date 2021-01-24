@@ -20,9 +20,9 @@ Steps to use the script:
 6. Export the pokemon with surrounding entries as well. Make sure to leave a lot of extra room depending on the frame number of the target pokemon. The higher the frame number, the more room. For numbers < 100,000, leave +/- 10,000 entries. For numbers between 100,000 and 1,000,000, leave +/- 100,000 entries. For sufficiently large frame numbers, consider using +/- 2,000,000 entries. Name the file "1.txt", "h2.txt", or "h4.txt" depending on the method, and place it in the lua directory.
 
 7. Start the game, and get to the moment right before the keypress that will trigger an encounter / trigger the pokemon to be generated. Edit the top of the lua script.
-  - status: 1 if the pokemon will be in your party (gift pokemon like starter, beldum, and magikarp). 2 for a wild encounter.
+  - isPartyPkmn: true if the pokemon will be in your party (gift pokemon like starter, beldum, and magikarp), false if wild encounter.
   - partyIndex: If status == 1, the location in the party where the pokemon will appear. Can be 1-6.
-  - method: 1  if method 1 pokemon. Any other number otherwise. Make sure that your method's txt file is the only one in the directory!
+  - method: 1 if method 1 pokemon. Any other number otherwise. Make sure that your method's txt file is the only one in the directory!
   - button: 0 if "A" is to be pressed to trigger the encounter. For other integers, "Up" will be used.
 
 8. Pause the game from the emulator and create your own manual savestate (just incase something goes wrong :) ).
