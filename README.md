@@ -2,6 +2,8 @@
 
 This lua script can allow you to automatically RNG any pokemon in a gen 3 pokemon game.
 
+For instructions on how to do this manually, a good explanation of what is actually happening, and how to do much of the setting up, consult the following guide: https://projectpokemon.org/home/forums/topic/40187-tutorial-gen-3-emurng-tutorials-for-basic-methods/
+
 Note that only method 1 Pokemon, static encounters, have been tested.
 
 Steps to use the script:
@@ -13,7 +15,7 @@ Steps to use the script:
 
 4. Use RNGReporter to find the pokemon you want to get. Note that this was built for RNGReporter 10.3.4. This may be incompatible with other versions based on how columns are ordered and output.
 - You will need PKHex to view data about your save file if you want to get shiny pokemon and dont have any yet.
-- You will need to know the seed of the current RNG instance in the game. Unless you are somehow emulating a battery, Pokemon Emerald will have a seed of 0, Sapphire/Ruby will be 5A0, and FireRed/LeafGreen will generate one after "start" is pressed on the title screen. For FR/LG, the seed can be found in the bottom left corner of the screen when the LUA script is running. Note that for FR/LG this seed will change if you "turn off" the system. However, it will stay the same if you save that save state. Consequentially, it may be benefitial to reset the game and check every seed you encounter to look for good/early frame pokemon in these seeds, making savestates of ones you think are good.
+- You will need to know the seed of the current RNG instance in the game. Unless you are somehow emulating a battery, Pokemon Emerald will have a seed of 0, Sapphire/Ruby will be 5A0, and FireRed/LeafGreen will generate one after "start" is pressed on the title screen. For FR/LG, consult the linked guide at the top under "other things to note". Note that for FR/LG this seed will change if you "turn off" the system. However, it will stay the same if you save that save state. Consequentially, it may be benefitial to reset the game and check every seed you encounter to look for good/early frame pokemon in these seeds, making savestates of ones you think are good.
   
 5. Export only that pokemon's entry as a text file, naming it "target.txt". Place it in the same directory as the lua script.
 
