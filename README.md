@@ -12,18 +12,18 @@ Steps to use the script:
 3. Place the lua script in the lua folder / directory where lua scripts are stored in your version.
 
 4. Use RNGReporter to find the pokemon you want to get.
-  - You will need PKHex to view data about your save file if you want to get shiny pokemon and dont have any yet.
-  - You will need to know the seed of the current RNG instance in the game. Unless you are somehow emulating a battery, Pokemon Emerald will have a seed of 0, Sapphire/Ruby will be 5A0, and FireRed/LeafGreen will generate one after "start" is pressed on the title screen. For FR/LG, the seed can be found in the bottom left corner of the screen when the LUA script is running. Note that for FR/LG this seed will change if you "turn off" the system. However, it will stay the same if you save that save state. Consequentially, it may be benefitial to reset the game and check every seed you encounter to look for good/early frame pokemon in these seeds, making savestates of ones you think are good.
+  . You will need PKHex to view data about your save file if you want to get shiny pokemon and dont have any yet.
+  . You will need to know the seed of the current RNG instance in the game. Unless you are somehow emulating a battery, Pokemon Emerald will have a seed of 0, Sapphire/Ruby will be 5A0, and FireRed/LeafGreen will generate one after "start" is pressed on the title screen. For FR/LG, the seed can be found in the bottom left corner of the screen when the LUA script is running. Note that for FR/LG this seed will change if you "turn off" the system. However, it will stay the same if you save that save state. Consequentially, it may be benefitial to reset the game and check every seed you encounter to look for good/early frame pokemon in these seeds, making savestates of ones you think are good.
   
 5. Export only that pokemon's entry as a text file, naming it "target.txt". Place it in the same directory as the lua script.
 
 6. Export the pokemon with surrounding entries as well. Make sure to leave a lot of extra room depending on the frame number of the target pokemon. The higher the frame number, the more room. For numbers < 100,000, leave +/- 10,000 entries. For numbers between 100,000 and 1,000,000, leave +/- 100,000 entries. For sufficiently large frame numbers, consider using +/- 2,000,000 entries. Name the file "1.txt", "h2.txt", or "h4.txt" depending on the method, and place it in the lua directory.
 
 7. Start the game, and get to the moment right before the keypress that will trigger an encounter / trigger the pokemon to be generated. Edit the top of the lua script.
-  - isPartyPkmn: true if the pokemon will be in your party (gift pokemon like starter, beldum, and magikarp), false if wild encounter.
-  - partyIndex: If status == 1, the location in the party where the pokemon will appear. Can be 1-6.
-  - method: 1 if method 1 pokemon. Any other number otherwise. Make sure that your method's txt file is the only one in the directory!
-  - button: 0 if "A" is to be pressed to trigger the encounter. For other integers, "Up" will be used.
+  . isPartyPkmn: true if the pokemon will be in your party (gift pokemon like starter, beldum, and magikarp), false if wild encounter.
+  . partyIndex: If status == 1, the location in the party where the pokemon will appear. Can be 1-6.
+  . method: 1 if method 1 pokemon. Any other number otherwise. Make sure that your method's txt file is the only one in the directory!
+  . button: 0 if "A" is to be pressed to trigger the encounter. For other integers, "Up" will be used.
 
 8. Pause the game from the emulator and create your own manual savestate (just incase something goes wrong :) ).
 
