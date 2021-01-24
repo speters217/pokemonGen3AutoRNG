@@ -37,6 +37,7 @@ How it works:
 The script will progress until the desired frame. Meanwhile it is periodically making save states. The frequency of the save states depend on how large the desired frame is, and increases as it draws nearer. Once the desired frame is reached, the script inputs the trigger button to encounter the pokemon. Then, the stats of the pokemon are searched in the method text file to find the pokemon that was found. If the pokemon was not the desired one, the frame error is calculated (difference between frame of actual pokemon and desired pokemon) and a new target frame is created. The latest savestate before this frame is then loaded. This process repeats until the desired pokemon is achieved. Note that 0-3 reloads are expected. Once the desired pokemon is reached, the game will pause and the pokemon's stats will be displayed.
 
 Troubleshooting:
+- If the lua script fails to run completely, you may need to replace the dll files for lua that are in or above the lua directory.
 - Re-read the above steps carefully. Look up manual RNG manipulation guides if you are confused about the overall process.
 - Make sure that you are only one keypress away from encountering the pokemon. Sometimes this is calculated while talking to someone.
 - Note that the frame error tends to increase as the current frame increases, and as the game clock increases. This may cause a very early frame to be unobtainable. You can try to fix this issue by changing the game clock in PKHex.
