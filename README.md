@@ -59,7 +59,7 @@ The GUI will display the current frame as well as the desired frame. An estimati
 
 ![Recalculating](Pictures/Recalculating.png)
 
-The right box displays the process of looking for which Pokemon was encountered, and adjusting the target frame. The offset here is 1575 frames which gives a new target of frame 61,260. The save state on frame 59,000 is loaded. This readjustment process can take multiple times.
+The right box displays the process of looking for which Pokemon was encountered and adjusting the target frame. The offset here is 1575 frames which gives a new target of frame 61,260. The save state on frame 59,000 is loaded. This readjustment process can take multiple times.
 
 
 ![Pokemon Found](Pictures/PokemonFound.png)
@@ -69,7 +69,7 @@ The script detects that the encountered Pokemon is the desired shiny Mewtwo! Its
 TODO:
 
 - Optimize savesatates algorithm
-     - Memory efficiency (Less saves)
+     - Memory efficiency (Number of saves)
      - Time efficiency (Frequency of saves)
 - Test method 2 and 4 encounters
 
