@@ -1,7 +1,18 @@
 # pokemonGen3AutoRNG
+Author: Samuel Peters
 
-This lua script can allow you to automatically RNG any Pokemon in a gen 3 Pokemon game. 
+This lua script can allow you to automatically RNG any Pokemon in a gen 3 Pokemon game. It is meant to eliminate the tediousness of manually RNG manipulating a 
+Pokemon. It is based on zaksabeast's autoFrLgRNG script (see credits section at bottom). This version has many improvements over that version. Notably: 
 
+- Ability to intelligently generate multiple save states. This removes the need to guess the frame delay, and makes the script faster. Especially for high frames, this saves a lot of time (Potentially hours).
+- Ability to RNG pokemon in the millions of frames (Highest tested is 20m, but it will work for higher frames). Previous version would crash when a high enough frame was reached due to memory leaks.
+- Newer version of RNGReporter. This was built on the latest version of RNGReporter whereas the previous version was built on a hard-to-find beta version.
+- Informative GUI that gives you an ETA, console that prints its status, and code that is much more documented. See pictures below for the GUI.
+- Works with all Gen 3 games as opposed to solely FireRed and LeafGreen.
+- Various bugs such as the program just not working as intended.
+
+
+## Instructions
 For instructions on how to do this manually, a good explanation of what is actually happening, and how to do much of the setting up, consult the following guide: https://projectpokemon.org/home/forums/topic/40187-tutorial-gen-3-emurng-tutorials-for-basic-methods/
 
 Note that only method 1 Pokemon, static encounters, have been tested.
@@ -37,7 +48,7 @@ Steps to use the script:
 11. Make a save state, stop the lua script, and catch that Pokemon!
 
 How it works: 
-The script will progress until the desired frame. Meanwhile it is periodically making save states. The frequency of the save states depend on how large the desired frame is, and increases as it draws nearer. Once the desired frame is reached, the script inputs the trigger button to encounter the Pokemon. Then, the stats of the Pokemon are searched in the method text file to find the Pokemon that was found. If the Pokemon was not the desired one, the frame error is calculated (difference between frame of actual Pokemon and desired Pokemon) and a new target frame is created. The latest save state before this frame is then loaded. This process repeats until the desired Pokemon is achieved. Note that 0-3 reloads are expected. Once the desired Pokemon is reached, the game will pause and the Pokemon's stats will be displayed.
+The script will progress until the desired frame. Meanwhile it is periodically making save states. The frequency of the save states depend on how large the desired frame is, and increases as it draws nearer. Once the desired frame is reached, the script inputs the trigger button to encounter the Pokemon. Then, the stats of the Pokemon are searched in the method text file to find the Pokemon that was found. If the Pokemon was not the desired one, the frame error is calculated (difference between frame of actual Pokemon and desired Pokemon) and a new target frame is created. The latest save state before this frame is then loaded. This process repeats until the desired Pokemon is encountered. Note that 1-3 reloads are expected. Once the desired Pokemon is reached, the game will pause and the Pokemon's stats will be displayed.
 
 Troubleshooting:
 - If the lua script fails to run completely, you may need to replace the dll files for lua that are in or above the lua directory.
@@ -68,12 +79,12 @@ The script detects that the encountered Pokemon is the desired shiny Mewtwo! Its
 
 TODO:
 
-- Optimize savesatates algorithm
+- Optimize save states algorithm
      - Memory efficiency (Number of saves)
      - Time efficiency (Frequency of saves)
 - Test method 2 and 4 encounters
 
-Credit:
+Credits:
 
 - zaksabeast for the inspiration and basis for this script: https://github.com/zaksabeast/rngLuaScripts/blob/master/autoFrLgRNG.lua
 
@@ -84,3 +95,5 @@ Credit:
 - http://stackoverflow.com/a/5032014 for string:split
 
 - http://stackoverflow.com/a/21287623 for newAutotable
+
+- https://scriptinghelpers.org/questions/27221/how-do-i-check-if-something-is-a-number for addCommas
