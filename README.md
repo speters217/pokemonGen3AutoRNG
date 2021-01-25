@@ -85,7 +85,7 @@ The script detects that the encountered Pokemon is the desired shiny Mewtwo! Its
 
 ## Credits:
 
-- zaksabeast for the inspiration and basis for this script: https://github.com/zaksabeast/rngLuaScripts/blob/master/autoFrLgRNG.lua
+- zaksabeast for the inspiration and basis for this script: https://github.com/zaksabeast/rngLuaScripts
 
 - FractalFusion and Kaphotics for the base of this script. Their work on the hex locations and the pokemonstats script were vital.
 
