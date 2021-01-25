@@ -9,7 +9,7 @@ Pokemon. It is based on zaksabeast's autoFrLgRNG script (see credits section at 
 - Newer version of RNGReporter. This was built on the latest version of RNGReporter whereas the previous version was built on a hard-to-find beta version.
 - Informative GUI that gives you an ETA, console that prints its status, and code that is much more documented. See pictures below for the GUI.
 - Works with all Gen 3 games as opposed to solely FireRed and LeafGreen.
-- Various bugs such as the program just not working as intended.
+- Various bugs that prevent the program from working as intended have been fixed.
 
 
 ## Instructions
