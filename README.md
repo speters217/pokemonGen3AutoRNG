@@ -47,18 +47,17 @@ Steps to use the script:
 
 11. Make a save state, stop the lua script, and catch that Pokemon!
 
-How it works: 
+## How it works: 
 The script will progress until the desired frame. Meanwhile it is periodically making save states. The frequency of the save states depend on how large the desired frame is, and increases as it draws nearer. Once the desired frame is reached, the script inputs the trigger button to encounter the Pokemon. Then, the stats of the Pokemon are searched in the method text file to find the Pokemon that was found. If the Pokemon was not the desired one, the frame error is calculated (difference between frame of actual Pokemon and desired Pokemon) and a new target frame is created. The latest save state before this frame is then loaded. This process repeats until the desired Pokemon is encountered. Note that 1-3 reloads are expected. Once the desired Pokemon is reached, the game will pause and the Pokemon's stats will be displayed.
 
-Troubleshooting:
+## Troubleshooting:
 - If the lua script fails to run completely, you may need to replace the dll files for lua that are in or above the lua directory.
 - Re-read the above steps carefully. Look up manual RNG manipulation guides if you are confused about the overall process.
 - Make sure that you are only one key press away from encountering the Pokemon. Sometimes this is calculated while talking to someone.
 - Note that the frame error tends to increase as the current frame increases, and as the game clock increases. This may cause a very early frame to be unobtainable. You can try to fix this issue by changing the game clock in PKHex.
 - The script will change the encoding of the text files so that they are compatible with lua. This was achieved by running powershell commands in the background. This may not work on your computer.
 
-Pictures:
-
+## Pictures:
 
 ![Warning Message](Pictures/WarningMessage.png)
 
@@ -77,14 +76,14 @@ The right box displays the process of looking for which Pokemon was encountered 
 
 The script detects that the encountered Pokemon is the desired shiny Mewtwo! Its stats are displayed on screen and the emulator is paused.
 
-TODO:
+## TODO:
 
 - Optimize save states algorithm
      - Memory efficiency (Number of saves)
      - Time efficiency (Frequency of saves)
 - Test method 2 and 4 encounters
 
-Credits:
+## Credits:
 
 - zaksabeast for the inspiration and basis for this script: https://github.com/zaksabeast/rngLuaScripts/blob/master/autoFrLgRNG.lua
 
