@@ -24,7 +24,7 @@ Steps to use the script:
 
 7. Start the game, and get to the moment right before the keypress that will trigger an encounter / trigger the Pokemon to be generated. Edit the top of the lua script.
  - isPartyPkmn: true if the Pokemon will be in your party (gift Pokemon like starter, beldum, and magikarp), false if wild encounter.
- - partyIndex: If status == 1, the location in the party where the Pokemon will appear. Can be 1-6.
+ - partyIndex: If isPartyPkmn is true, the location in the party where the Pokemon will appear. Can be 1-6.
  - method: 1 if method 1 Pokemon. Any other number otherwise. Make sure that your method's txt file is the only one in the directory!
  - button: 0 if "A" is to be pressed to trigger the encounter. For other integers, "Up" will be used.
 
