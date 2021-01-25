@@ -34,7 +34,7 @@ Steps to use the script:
 
 10. Wait until the game pauses, showing the Pokemon. The script will calculate the estimated time until the desired frame is reached.
 
-11. Make a sav estate, stop the lua script, and catch that Pokemon!
+11. Make a save state, stop the lua script, and catch that Pokemon!
 
 How it works: 
 The script will progress until the desired frame. Meanwhile it is periodically making save states. The frequency of the save states depend on how large the desired frame is, and increases as it draws nearer. Once the desired frame is reached, the script inputs the trigger button to encounter the Pokemon. Then, the stats of the Pokemon are searched in the method text file to find the Pokemon that was found. If the Pokemon was not the desired one, the frame error is calculated (difference between frame of actual Pokemon and desired Pokemon) and a new target frame is created. The latest save state before this frame is then loaded. This process repeats until the desired Pokemon is achieved. Note that 0-3 reloads are expected. Once the desired Pokemon is reached, the game will pause and the Pokemon's stats will be displayed.
