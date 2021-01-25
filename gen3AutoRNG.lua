@@ -1,22 +1,29 @@
+-- Author: Samuel Peters
+-- Github: speters217/pokemonGen3AutoRNG
+-- Date: January 24, 2021
+
+-- Thanks to:
+-- zaksabeast for the inspiration and basis for this script: https://github.com/zaksabeast/rngLuaScripts/blob/master/autoFrLgRNG.lua
+-- FractalFusion and Kaphotics for the base of this script. Their work on the hex locations and the pokemonstats script were vital.
+-- red-the-dev for his code that can detect the version of the game: https://github.com/red-the-dev/gen3-pokemonstatsdisplay
+-- http://stackoverflow.com/a/5032014 for string:split
+-- http://stackoverflow.com/a/21287623 for newAutotable
+-- https://scriptinghelpers.org/questions/27221/how-do-i-check-if-something-is-a-number for addCommas
+
+
+
 -- If method=1, then 1.csv will be read, any other value will use h2.csv and h4.csv
 -- Works with RNG Reporter 10.3.4
 -- If using another version, you may have to change pid and/or frame column
 
 -- MAKE EDITS HERE
-local status = 2 -- 1 for party, 2 for encounters -- TODO: give better variable name and make bool
-local partyIndex = 6 -- location in party (1-6) of pokemon to rng; ignored if status != 1
+local isPartyPkmn = false -- true for party, false for encounters
+local partyIndex = 6 -- location in party (1-6) of pokemon to rng; ignored if isPartyPkmn is true
 local method = 1 -- 1 for method 1 encounter
 local button = 0 -- leave 0 to press "A" on target frame, otherwise "up" will be pressed
 -- DON'T EDIT PAST HERE
 
--- Thanks to zaksabeast for the base of this script https://github.com/zaksabeast/rngLuaScripts/blob/master/autoFrLgRNG.lua
--- Thanks to FractalFusion and Kaphotics for a lot of the hex value work
--- Thanks to red-the-dev for building on FractalFusion and Kaphotic's work, and making this script work
--- for all gen 3 games https://github.com/red-the-dev/gen3-pokemonstatsdisplay
--- Thanks to http://stackoverflow.com/a/5032014 for string:split
--- Thanks to http://stackoverflow.com/a/21287623 for newAutotable
--- Thanks to https://scriptinghelpers.org/questions/27221/how-do-i-check-if-something-is-a-number for addCommas
-
+-- Returns the number that is closest to the goal
 function closestTo(goal, num1, num2)
     local temp1 = goal-num1
     local temp2 = goal-num2
@@ -34,6 +41,7 @@ function closestTo(goal, num1, num2)
     end
 end
 
+-- Converts a CSV to an array
 function csvToArray(fileName, method)
     local keysTxt = io.open(fileName, "r")
     local targetList = newAutotable(2)
@@ -54,6 +62,9 @@ function csvToArray(fileName, method)
     return targetList
 end
 
+-- Splits a string based on the passed delimeter
+-- Thanks to http://stackoverflow.com/a/5032014
+
 function string:split(delimiter)
   local result = { }
   local from  = 1
@@ -67,6 +78,8 @@ function string:split(delimiter)
   return result
 end
 
+-- Creates a new autotable with the given dimensions
+-- Thanks to http://stackoverflow.com/a/2128762
 function newAutotable(dim)
     local MT = {};
     for i=1, dim do
@@ -116,6 +129,7 @@ function findClosestSave(frame, saves, currSave)
 end
 
 -- Inserts commas into a number
+-- Thanks to https://scriptinghelpers.org/questions/27221/how-do-i-check-if-something-is-a-number for addCommas
 function addCommas(str)
 	if type(str) ~= "string" then
 		str = ""..str
@@ -274,7 +288,7 @@ end
 --2: Emerald U
 --3: FireRed/LeafGreen U
 --4: Ruby/Sapphire J
---5: Emerald J (TODO)
+--5: Emerald J
 --6: FireRed/LeafGreen J (1360)
 --7: Ruby/Sapphire I
 --8: FireRed/LeafGreen S
@@ -326,7 +340,7 @@ local rng   ={0x3004818, 0x3005D80, 0x3005000, 0x3004748, 0x0000000, 0x3005040, 
 local rng2  ={0x0000000, 0x0000000, 0x20386D0, 0x0000000, 0x0000000, 0x203861C, 0}
 
 
-if (status == 1) then
+if (isPartyPkmn) then
 	start = pstats[game] + 100 * (partyIndex - 1)
 else
 	start = estats[game] + 100 * (0) -- hardcoded as 0 since we will only RNG one wild pokemon
@@ -437,6 +451,8 @@ local found = 0 -- Is 0 until target is found, script pauses after 60 frames adv
 local frameNum = emu.framecount() -- Current frame
 local prevTime = os.time() --Used to calculate eta
 
+
+-- This is the main loop that drives the whole program. Each iteration corresponds to one frame in the game.
 createSave() -- Create initial save
 collectgarbage()
 while true do
@@ -570,12 +586,17 @@ while true do
     end
     --calculates the time elapsed between every 1000 frames and then makes an eta
     if (frameNum % 1000 == 0) then
+    	if (found > 59) then
+    		print("Pausing...")
+    		emu.pause()
+    	end
 		local diff = os.difftime(os.time(), prevTime)
 		prevTime = os.time()
 		local fps = 1000 / diff
 		local eta = (targetFrame - frameNum) / fps
 		
 		memo2 = "Time remaining: "..secondsToString(eta)
+		-- Garbage collects every million frames to prevent memory overflow. Doing this every frame will make the program crash.
 		if (frameNum % 1000000 == 0) then
 			collectgarbage()
 		end
@@ -584,8 +605,5 @@ while true do
     gui.text(0, 140, "Current Frame: "..addCommas(frameNum))
     gui.text(0, 150, memo)
     emu.frameadvance()
-    if (found == 60) then
-    	print("Pausing...")
-    	emu.pause()
-    end
+    
 end
